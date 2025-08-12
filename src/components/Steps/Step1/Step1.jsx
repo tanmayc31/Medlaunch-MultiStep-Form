@@ -107,7 +107,21 @@ const Step1 = () => {
           </div>
         </section>
 
-        
+        <div className={styles.navigation}>
+          <button type="button" className={styles.exitButton}>
+            Exit
+          </button>
+          
+          <div className={styles.rightButtons}>
+            <button type="button" className={styles.saveButton}>
+              Save
+            </button>
+            <button type="button" className={styles.continueButton}>
+              Continue
+            </button>
+          </div>
+        </div>
+
       </div>
     </div>
   );
