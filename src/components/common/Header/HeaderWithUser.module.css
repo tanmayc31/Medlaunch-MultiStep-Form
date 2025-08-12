@@ -1,0 +1,51 @@
+.header {
+  background-color: var(--main-header-blue);
+  color: var(--white);
+  width: 100%;
+  padding: var(--spacing-md) 0;
+}
+
+.container {
+  width: 100%;
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-size: var(--header-title-size);
+  line-height: var(--header-title-line-height);
+  letter-spacing: var(--header-title-letter-spacing);
+  margin: 0;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--white);
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: var(--avatar-font-weight);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.userName {
+  font-family: var(--font-family);
+  font-size: var(--header-name-size);
+  line-height: var(--header-name-line-height);
+  letter-spacing: var(--header-name-letter-spacing);
+}
