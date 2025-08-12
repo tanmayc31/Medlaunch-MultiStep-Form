@@ -6,6 +6,7 @@ import HeaderWithUser from './components/common/Header/HeaderWithUser'
 // import HeaderWithoutUser from './components/common/Header/HeaderWithoutUser'
 import ProgressBar from './components/common/ProgressBar/ProgressBar';
 import Step1 from './components/Steps/Step1/Step1'
+import SupportChat from './components/common/SupprtChat/SupportChat'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -17,7 +18,9 @@ function App() {
       <HeaderWithUser />
       <ProgressBar currentStep={1}/>
       <Step1 />
+      <SupportChat />
     </div>
+
   )
 }
 

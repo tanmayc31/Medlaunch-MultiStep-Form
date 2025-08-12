@@ -1,0 +1,26 @@
+.supportChat {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  background-color: var(--accent-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 25px;
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  box-shadow: var(--shadow-md);
+  z-index: 1000;
+}
+
+.supportChat:hover {
+  background-color: #004494;
+}
+
+.icon {
+  font-size: var(--font-size-large);
+}
