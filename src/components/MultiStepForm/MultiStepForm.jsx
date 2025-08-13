@@ -9,9 +9,11 @@ import SupportChat from '../common/SupportChat/SupportChat';
 import Step1 from '../Steps/Step1/Step1';
 import Step2 from '../Steps/Step2/Step2';
 import Step2IfYes from '../Steps/Step2/Step2IfYes';
+import Step3 from '../Steps/Step3/Step3';
+import Step4 from '../Steps/Step4/Step4';
 
 import styles from './MultiStepForm.module.css';
-import Step3 from '../Steps/Step3/Step3';
+
 
 const MultiStepForm = () => {
   const { currentStep, formData, showStep2IfYes } = useForm();
@@ -37,7 +39,7 @@ const MultiStepForm = () => {
       case 3:
         return <Step3 />;
       case 4:
-        return <div>Step 4 - Coming Soon</div>;
+        return <Step4 />;
       case 5:
         return <div>Step 5 - Coming Soon</div>;
       case 6:
