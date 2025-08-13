@@ -1,5 +1,6 @@
-import React from 'react';
+// import React from 'react';
 import styles from './Step1.module.css';
+import Navigation from '../../common/Navigation/Navigation';
 
 const Step1 = () => {
   return (
@@ -107,21 +108,12 @@ const Step1 = () => {
           </div>
         </section>
 
-        <div className={styles.navigation}>
-          <button type="button" className={styles.exitButton}>
-            Exit
-          </button>
-          
-          <div className={styles.rightButtons}>
-            <button type="button" className={styles.saveButton}>
-              Save
-            </button>
-            <button type="button" className={styles.continueButton}>
-              Continue
-            </button>
-          </div>
-        </div>
-
+        <Navigation 
+          showPrevious={false}
+          buttonText="Continue"
+        //   onSave={() => console.log('Save clicked')}       // save progress logic
+        //   onContinue={() => console.log('Continue clicked')}      // continue to next step or submit button alet on 6th step
+        />
       </div>
     </div>
   );

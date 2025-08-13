@@ -1,0 +1,53 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+}
+
+.leftButtons {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.rightButtons {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+/* Button base styles */
+.exitButton,
+.previousButton {
+  background-color: var(--white);
+  color: var(--dark-gray);
+  border: 1px solid var(--border-gray);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+}
+
+.saveButton,
+.continueButton {
+  background-color: var(--accent-blue);
+  color: var(--white);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+}
+
+/* Hover effects */
+.exitButton:hover,
+.previousButton:hover {
+  background-color: var(--light-gray);
+}
+
+.saveButton:hover,
+.continueButton:hover {
+  background-color: #004494;
+}
