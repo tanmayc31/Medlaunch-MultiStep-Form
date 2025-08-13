@@ -20,6 +20,7 @@ export function FormProvider({ children }) {
     facilityType: '',
   });
 
+
   const updateFormData = (newData) => {
     setFormData(prev => ({
       ...prev,
@@ -43,6 +44,10 @@ export function FormProvider({ children }) {
     setCurrentStep(step);
   };
 
+  const showStep2IfYes = () => {
+  return formData.sameAsLegalEntity === true;
+};
+
   return (
     <FormContext.Provider value={{
       currentStep,
@@ -50,7 +55,8 @@ export function FormProvider({ children }) {
       updateFormData,
       nextStep,
       previousStep,
-      goToStep
+      goToStep,
+      showStep2IfYes
     }}>
       {children}
     </FormContext.Provider>

@@ -13,7 +13,7 @@ import Step2IfYes from '../Steps/Step2/Step2IfYes';
 import styles from './MultiStepForm.module.css';
 
 const MultiStepForm = () => {
-  const { currentStep, formData } = useForm();
+  const { currentStep, formData, showStep2IfYes } = useForm();
 
   // which header to show
   const renderHeader = () => {
@@ -32,7 +32,7 @@ const MultiStepForm = () => {
       case 2:
         // For now, let's use regular Step2
         // Later we'll add logic for "If Yes" version
-        return <Step2 />;
+        return showStep2IfYes() ? <Step2IfYes /> : <Step2 />;
       case 3:
         return <div>Step 3 - Coming Soon</div>;
       case 4:

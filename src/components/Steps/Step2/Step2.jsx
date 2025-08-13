@@ -5,11 +5,12 @@ import Navigation from '../../common/Navigation/Navigation';
 import { useForm } from '../../../contexts/FormContext';
 
 const Step2 = () => {
+
   const { nextStep, previousStep } = useForm();
 
   const facilityTypes = [
     'Short-Term Acute Care',
-    'Long-Term Acute Care', 
+    'Long-Term Acute Care',
     'Critical Access',
     "Children's",
     'Free-Standing Psychiatric',
@@ -19,26 +20,26 @@ const Step2 = () => {
   return (
     <div className={styles.step}>
       <div className={styles.container}>
-        
+
         {/* Facility Type Section */}
         <section className={styles.section}>
           <h3 className={styles.sectionTitle}>Facility and Organization Type</h3>
-          
+
           <div className={styles.formGroup}>
             <label className={styles.fieldLabel}>Facility Type *</label>
-            
+
             <div className={styles.radioGroup}>
               {facilityTypes.map((type, index) => (
                 <div key={index} className={styles.radioOption}>
-                  <input 
-                    type="radio" 
+                  <input
+                    type="radio"
                     id={`facility-${index}`}
-                    name="facilityType" 
+                    name="facilityType"
                     value={type}
                     className={styles.radioInput}
                   />
-                  <label 
-                    htmlFor={`facility-${index}`} 
+                  <label
+                    htmlFor={`facility-${index}`}
                     className={styles.radioLabel}
                   >
                     {type}
@@ -49,13 +50,13 @@ const Step2 = () => {
           </div>
         </section>
 
-        <Navigation 
-        showPrevious={true}
-        buttonText="Continue"
-        onPrevious={() => previousStep()}  
-        onSave={() => console.log('Save clicked')}
-        onContinue={() => nextStep()}    
-      />
+        <Navigation
+          showPrevious={true}
+          buttonText="Continue"
+          onPrevious={() => previousStep()}
+          onSave={() => alert('Progress saved!')}
+          onContinue={() => nextStep()}
+        />
 
       </div>
     </div>
