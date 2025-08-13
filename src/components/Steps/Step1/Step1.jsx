@@ -1,8 +1,12 @@
 // import React from 'react';
 import styles from './Step1.module.css';
 import Navigation from '../../common/Navigation/Navigation';
+import { useForm } from '../../../contexts/FormContext';
 
 const Step1 = () => {
+
+    const { nextStep } = useForm();
+
   return (
     <div className={styles.step}>
       <div className={styles.container}>
@@ -109,11 +113,17 @@ const Step1 = () => {
         </section>
 
         <Navigation 
+        showPrevious={false}
+        buttonText="Continue"
+        onSave={() => console.log('Save clicked')}
+        onContinue={() => nextStep()} 
+      />
+        {/* <Navigation 
           showPrevious={false}
           buttonText="Continue"
         //   onSave={() => console.log('Save clicked')}       // save progress logic
         //   onContinue={() => console.log('Continue clicked')}      // continue to next step or submit button alet on 6th step
-        />
+        /> */}
       </div>
     </div>
   );

@@ -2,7 +2,11 @@ import React from 'react';
 import styles from './Step2.module.css';
 import Navigation from '../../common/Navigation/Navigation';
 
+import { useForm } from '../../../contexts/FormContext';
+
 const Step2 = () => {
+  const { nextStep, previousStep } = useForm();
+
   const facilityTypes = [
     'Short-Term Acute Care',
     'Long-Term Acute Care', 
@@ -46,12 +50,12 @@ const Step2 = () => {
         </section>
 
         <Navigation 
-          showPrevious={true}
-          buttonText="Continue"
-          onPrevious={() => console.log('Previous clicked')}
-          onSave={() => console.log('Save clicked')}
-          onContinue={() => console.log('Continue clicked')}
-        />
+        showPrevious={true}
+        buttonText="Continue"
+        onPrevious={() => previousStep()}  
+        onSave={() => console.log('Save clicked')}
+        onContinue={() => nextStep()}    
+      />
 
       </div>
     </div>

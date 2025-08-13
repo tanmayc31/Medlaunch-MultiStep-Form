@@ -1,7 +1,12 @@
 import React from 'react';
+import { useForm } from '../../../contexts/FormContext';
 import styles from './ProgressBar.module.css';
 
-const ProgressBar = ({ currentStep = 1 }) => {
+const ProgressBar = () => {
+
+    const {currentStep }= useForm();
+
+
     const stepTitles = [
         'New DNV Quote Request',
         'Facility Details',
