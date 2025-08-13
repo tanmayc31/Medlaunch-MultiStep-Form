@@ -11,6 +11,7 @@ import Step2 from '../Steps/Step2/Step2';
 import Step2IfYes from '../Steps/Step2/Step2IfYes';
 
 import styles from './MultiStepForm.module.css';
+import Step3 from '../Steps/Step3/Step3';
 
 const MultiStepForm = () => {
   const { currentStep, formData, showStep2IfYes } = useForm();
@@ -34,7 +35,7 @@ const MultiStepForm = () => {
         // Later we'll add logic for "If Yes" version
         return showStep2IfYes() ? <Step2IfYes /> : <Step2 />;
       case 3:
-        return <div>Step 3 - Coming Soon</div>;
+        return <Step3 />;
       case 4:
         return <div>Step 4 - Coming Soon</div>;
       case 5:

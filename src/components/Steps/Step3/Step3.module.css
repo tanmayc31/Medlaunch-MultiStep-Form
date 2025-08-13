@@ -1,0 +1,108 @@
+.step {
+  background-color: var(--light-gray);
+  min-height: 60vh;
+  padding: var(--spacing-lg) 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  /* padding: 0 var(--spacing-lg); */
+}
+
+.section {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.sectionTitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-large);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 var(--spacing-lg) 0;
+}
+
+.sectionGap {
+  height: var(--spacing-sm);
+  margin: var(--spacing-sm);
+}
+
+/* Contact sections */
+.contactSection {
+  border: 1px solid var(--border-gray);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.contactTitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.formGroup {
+  margin-bottom: var(--spacing-lg);
+}
+
+.formRow {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.formRow .formGroup {
+  flex: 1;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-gray);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--text-dark);
+  background-color: var(--white);
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.1);
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox label {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--text-dark);
+  cursor: pointer;
+}
