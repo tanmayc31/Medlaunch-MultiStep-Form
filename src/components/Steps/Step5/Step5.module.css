@@ -1,0 +1,233 @@
+.step {
+  background-color: var(--light-gray);
+  min-height: 60vh;
+  padding: var(--spacing-lg) 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.section {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.sectionTitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-large);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 var(--spacing-lg) 0;
+}
+
+.sectionSubtitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  color: var(--dark-gray);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Service Tabs */
+.serviceTabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-gray);
+  margin-bottom: var(--spacing-lg);
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--dark-gray);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  color: var(--accent-blue);
+}
+
+.tab.active {
+  color: var(--accent-blue);
+  border-bottom-color: var(--accent-blue);
+  font-weight: 600;
+}
+
+/* Search Bar */
+.searchContainer {
+  position: relative;
+  margin-bottom: var(--spacing-lg);
+}
+
+.searchInput {
+  width: 100%;
+  padding: var(--spacing-md);
+  padding-right: 40px;
+  border: 1px solid var(--border-gray);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+}
+
+.searchIcon {
+  position: absolute;
+  right: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dark-gray);
+}
+
+/* Service Grid */
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.serviceCategory {
+  border: 1px solid var(--border-gray);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  background-color: var(--white);
+}
+
+.categoryTitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.serviceOption {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.serviceOption input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent-blue);
+}
+
+.serviceOption label {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--text-dark);
+  cursor: pointer;
+  flex: 1;
+}
+
+/* Add Service Button */
+.addServiceButton {
+  background: none;
+  border: 1px solid var(--accent-blue);
+  color: var(--accent-blue);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  margin-bottom: var(--spacing-lg);
+}
+
+.addServiceButton:hover {
+  background-color: var(--accent-blue);
+  color: var(--white);
+}
+
+/* Other Service Section */
+.otherServiceSection {
+  border: 1px solid var(--border-gray);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  background-color: #FFF9E6;
+}
+
+.otherServiceInput {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.otherServiceInput .input {
+  flex: 1;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  padding: var(--spacing-xs);
+}
+
+/* Form Elements */
+.formGroup {
+  margin-bottom: var(--spacing-lg);
+}
+
+.formRow {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.formRow .formGroup {
+  flex: 1;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-gray);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--text-dark);
+  background-color: var(--white);
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .serviceGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .formRow {
+    flex-direction: column;
+  }
+  
+  .otherServiceInput {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
