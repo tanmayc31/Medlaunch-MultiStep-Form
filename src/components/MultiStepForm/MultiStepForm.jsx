@@ -1,5 +1,7 @@
 import React from 'react';
 import { useForm } from '../../contexts/FormContext';
+
+//Import all common components
 import HeaderWithUser from '../common/Header/HeaderWithUser';
 import HeaderWithoutUser from '../common/Header/HeaderWithoutUser';
 import ProgressBar from '../common/ProgressBar/ProgressBar';
@@ -11,6 +13,7 @@ import Step2 from '../Steps/Step2/Step2';
 import Step2IfYes from '../Steps/Step2/Step2IfYes';
 import Step3 from '../Steps/Step3/Step3';
 import Step4 from '../Steps/Step4/Step4';
+import Step5 from '../Steps/Step5/Step5';
 
 import styles from './MultiStepForm.module.css';
 
@@ -41,7 +44,7 @@ const MultiStepForm = () => {
       case 4:
         return <Step4 />;
       case 5:
-        return <div>Step 5 - Coming Soon</div>;
+        return <Step5 />;
       case 6:
         return <div>Step 6 - Coming Soon</div>;
       default:
