@@ -9,7 +9,9 @@ const Step5 = () => {
     const [activeTab, setActiveTab] = useState('All Services');
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedServices, setSelectedServices] = useState([]);
+    const [servicesData, setServicesData] = useState({});
     const [showOtherService, setShowOtherService] = useState(false);
+
 
     const [selectedStandards, setSelectedStandards] = useState([]);
     const [thrombolyticDates, setThrombolyticDates] = useState([]);
@@ -33,13 +35,40 @@ const Step5 = () => {
         ]
     };
 
-    const handleServiceChange = (service, checked) => {
-        if (checked) {
-            setSelectedServices([...selectedServices, service]);
-        } else {
-            setSelectedServices(selectedServices.filter(s => s !== service));
+   const handleServiceChange = (service, checked) => {
+  if (checked) {
+    // Add service with empty contact info
+    setServicesData({
+      ...servicesData,
+      [service]: {
+        selected: true,
+        contact: {
+          name: '',
+          phone: '',
+          email: ''
         }
-    };
+      }
+    });
+  } else {
+    // Remove service and its contact info
+    const newData = { ...servicesData };
+    delete newData[service];
+    setServicesData(newData);
+  }
+};
+
+const handleContactChange = (service, field, value) => {
+  setServicesData({
+    ...servicesData,
+    [service]: {
+      ...servicesData[service],
+      contact: {
+        ...servicesData[service].contact,
+        [field]: value
+      }
+    }
+  });
+};
 
     return (
         <div className={styles.step}>
@@ -73,25 +102,76 @@ const Step5 = () => {
                     </div>
 
                     {/* Service Categories */}
-                    <div className={styles.serviceGrid}>
-                        {Object.entries(serviceCategories).map(([category, services]) => (
-                            <div key={category} className={styles.serviceCategory}>
-                                <h4 className={styles.categoryTitle}>{category}</h4>
-                                {services.map((service, index) => (
-                                    <div key={index} className={styles.serviceOption}>
-                                        <input
-                                            type="checkbox"
-                                            id={`service-${category}-${index}`}
-                                            onChange={(e) => handleServiceChange(service, e.target.checked)}
-                                        />
-                                        <label htmlFor={`service-${category}-${index}`}>
-                                            {service}
-                                        </label>
-                                    </div>
-                                ))}
-                            </div>
-                        ))}
-                    </div>
+                    {/* Service Categories with Contact Forms */}
+<div className={styles.serviceGrid}>
+  {Object.entries(serviceCategories).map(([category, services]) => (
+    <div key={category} className={styles.serviceCategory}>
+      <h4 className={styles.categoryTitle}>{category}</h4>
+      
+      {services.map((service, index) => {
+        const isSelected = servicesData[service]?.selected || false;
+        
+        return (
+          <div key={index} className={styles.serviceBlock}>
+            {/* Checkbox */}
+            <div className={styles.serviceOption}>
+              <input 
+                type="checkbox"
+                id={`service-${category}-${index}`}
+                checked={isSelected}
+                onChange={(e) => handleServiceChange(service, e.target.checked)}
+              />
+              <label htmlFor={`service-${category}-${index}`}>
+                {service}
+              </label>
+            </div>
+
+            {/* Contact Form - appears when service is selected */}
+            {isSelected && (
+              <div className={styles.contactForm}>
+                <div className={styles.contactRow}>
+                  <div className={styles.contactField}>
+                    <label className={styles.contactLabel}>Contact Name:</label>
+                    <input 
+                      type="text"
+                      className={styles.contactInput}
+                      value={servicesData[service]?.contact?.name || ''}
+                      onChange={(e) => handleContactChange(service, 'name', e.target.value)}
+                      placeholder="Enter contact name"
+                    />
+                  </div>
+                </div>
+                
+                <div className={styles.contactRow}>
+                  <div className={styles.contactField}>
+                    <label className={styles.contactLabel}>Phone:</label>
+                    <input 
+                      type="tel"
+                      className={styles.contactInput}
+                      value={servicesData[service]?.contact?.phone || ''}
+                      onChange={(e) => handleContactChange(service, 'phone', e.target.value)}
+                      placeholder="Enter phone number"
+                    />
+                  </div>
+                  <div className={styles.contactField}>
+                    <label className={styles.contactLabel}>Email:</label>
+                    <input 
+                      type="email"
+                      className={styles.contactInput}
+                      value={servicesData[service]?.contact?.email || ''}
+                      onChange={(e) => handleContactChange(service, 'email', e.target.value)}
+                      placeholder="Enter email address"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  ))}
+</div>
 
                     {/* Add Other Service */}
                     <button
