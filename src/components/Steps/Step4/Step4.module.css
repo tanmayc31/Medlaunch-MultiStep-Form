@@ -68,3 +68,203 @@
   line-height: 1.4;
 }
 
+/* Upload Section */
+.uploadSection {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--border-gray);
+}
+
+.uploadCard {
+  border: 2px solid var(--accent-blue);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  background-color: #F0F7FF;
+}
+
+.uploadTitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.uploadDescription {
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  color: var(--dark-gray);
+  margin: 0 0 var(--spacing-lg) 0;
+}
+
+/* Drop Zone */
+.dropZone {
+  border: 2px dashed var(--accent-blue);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-2xl);
+  text-align: center;
+  background-color: var(--white);
+  position: relative;
+  margin-bottom: var(--spacing-lg);
+}
+
+.uploadIcon {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.dropText {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.dropSubtext {
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  color: var(--dark-gray);
+  margin: 0 0 var(--spacing-lg) 0;
+}
+
+.fileInput {
+  display: none;
+}
+
+.selectButton {
+  background-color: var(--accent-blue);
+  color: var(--white);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: var(--spacing-md);
+  display: inline-block;
+}
+
+.selectButton:hover {
+  background-color: #004494;
+}
+
+.templateLink {
+  background: none;
+  border: none;
+  color: var(--accent-blue);
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  text-decoration: underline;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.templateLink:hover {
+  color: #004494;
+}
+
+/* Uploaded Files Section */
+.uploadedSection {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-gray);
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+}
+
+.uploadedTitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.fileItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-gray);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-sm);
+  background-color: var(--light-gray);
+}
+
+.fileInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex: 1;
+}
+
+.fileIcon {
+  font-size: var(--font-size-large);
+}
+
+.fileName {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.previewLink {
+  background: none;
+  border: none;
+  color: var(--accent-blue);
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: var(--spacing-sm);
+}
+
+.previewLink:hover {
+  color: #004494;
+}
+
+.fileActions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.fileSize {
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  color: var(--dark-gray);
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-small);
+  padding: var(--spacing-xs);
+}
+
+.removeButton:hover {
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .locationOptions {
+    flex-direction: column;
+  }
+  
+  .fileItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+  
+  .fileActions {
+    align-self: flex-end;
+  }
+}

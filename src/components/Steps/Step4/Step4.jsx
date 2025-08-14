@@ -6,10 +6,26 @@ import { useForm } from '../../../contexts/FormContext';
 const Step4 = () => {
     const { formData, updateFormData, nextStep, previousStep } = useForm();
     const [selectedLocation, setSelectedLocation] = useState('');
+    const [uploadedFiles, setUploadedFiles] = useState([]);
 
     const handleLocationSelect = (locationType) => {
         setSelectedLocation(locationType);
         updateFormData({ locationType });
+    };
+
+    const handleFileUpload = (event) => {
+        const files = Array.from(event.target.files);
+        const newFiles = files.map(file => ({
+            name: file.name,
+            size: (file.size / (1024 * 1024)).toFixed(1) + 'MB',
+            file: file
+        }));
+        setUploadedFiles([...uploadedFiles, ...newFiles]);
+    };
+
+    const handleFileRemove = (index) => {
+        const newFiles = uploadedFiles.filter((_, i) => i !== index);
+        setUploadedFiles(newFiles);
     };
 
     return (
@@ -36,6 +52,76 @@ const Step4 = () => {
                             <p className={styles.cardDescription}>We have multiple facilities or practice locations</p>
                         </div>
                     </div>
+
+                    {/* Show upload section only when Multiple Locations is selected */}
+                    {selectedLocation === 'multiple' && (
+                        <div className={styles.uploadSection}>
+                            <h3 className={styles.sectionTitle}>How would you like to add your site information?</h3>
+                            
+                            <div className={styles.uploadCard}>
+                                <h4 className={styles.uploadTitle}>Upload CSV / Excel</h4>
+                                <p className={styles.uploadDescription}>Upload a spreadsheet with all site information</p>
+
+                                <div className={styles.dropZone}>
+                                    <div className={styles.uploadIcon}>⬆️</div>
+                                    <p className={styles.dropText}>Upload Site Information</p>
+                                    <p className={styles.dropSubtext}>Drag and drop your CSV or Excel file here, or click to select</p>
+                                    
+                                    <input 
+                                        type="file"
+                                        accept=".csv,.xlsx,.xls"
+                                        onChange={handleFileUpload}
+                                        className={styles.fileInput}
+                                        id="fileUpload"
+                                        multiple
+                                    />
+                                    <label htmlFor="fileUpload" className={styles.selectButton}>
+                                        Select file
+                                    </label>
+
+                                    <button 
+                                        type="button" 
+                                        className={styles.templateLink}
+                                        onClick={() => alert('Download CSV Template')}
+                                    >
+                                        Download CSV Template
+                                    </button>
+                                </div>
+
+                                {/* Show uploaded files */}
+                                {uploadedFiles && (
+                                    <div className={styles.uploadedSection}>
+                                        <h4 className={styles.uploadedTitle}>Uploaded</h4>
+                                        {uploadedFiles.map((file, index) => (
+                                            <div key={index} className={styles.fileItem}>
+                                                <div className={styles.fileInfo}>
+                                                    <span className={styles.fileIcon}>📄</span>
+                                                    <span className={styles.fileName}>{file.name}</span>
+                                                    <button 
+                                                        type="button" 
+                                                        className={styles.previewLink}
+                                                        onClick={() => alert('File Preview')}
+                                                    >
+                                                        Preview
+                                                    </button>
+                                                </div>
+                                                <div className={styles.fileActions}>
+                                                    <span className={styles.fileSize}>{file.size}</span>
+                                                    <button 
+                                                        type="button" 
+                                                        className={styles.removeButton}
+                                                        onClick={() => handleFileRemove(index)}
+                                                    >
+                                                        ❌
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    )}
 
                 </section>
 
