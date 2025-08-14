@@ -216,6 +216,49 @@
   box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.1);
 }
 
+/* Tag Container */
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+/* Blue Tags */
+.tag {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background-color: var(--accent-blue);
+  color: var(--white);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 20px;
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+}
+
+.tagRemove {
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  margin-left: var(--spacing-xs);
+}
+
+.tagRemove:hover {
+  opacity: 0.7;
+}
+
+.helperText {
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  color: var(--dark-gray);
+  margin-top: var(--spacing-sm);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .serviceGrid {
@@ -231,3 +274,4 @@
     align-items: stretch;
   }
 }
+
