@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './MultiStepForm.module.css';
 import { useForm } from '../../contexts/FormContext';
 
 //Import all common components
@@ -14,8 +15,10 @@ import Step2IfYes from '../Steps/Step2/Step2IfYes';
 import Step3 from '../Steps/Step3/Step3';
 import Step4 from '../Steps/Step4/Step4';
 import Step5 from '../Steps/Step5/Step5';
+import Step6 from '../Steps/Step6/Step6';
 
-import styles from './MultiStepForm.module.css';
+
+
 
 
 const MultiStepForm = () => {
@@ -46,7 +49,7 @@ const MultiStepForm = () => {
       case 5:
         return <Step5 />;
       case 6:
-        return <div>Step 6 - Coming Soon</div>;
+        return <Step6 />;
       default:
         return <Step1 />;
     }

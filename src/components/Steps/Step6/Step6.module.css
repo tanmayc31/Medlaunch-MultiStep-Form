@@ -7,7 +7,6 @@
 .container {
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 var(--spacing-lg);
 }
 
 .reviewContainer {
@@ -48,10 +47,17 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
+  cursor: pointer;  
+  user-select: none;
+}
+
+.sectionHeader:hover {
+  background-color: #004494; 
 }
 
 .collapseIcon {
   font-size: var(--font-size-small);
+  transition: transform 0.3s ease;
 }
 
 .sectionTitle {
