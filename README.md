@@ -131,7 +131,7 @@ dnv-multistep-form/
 
 ## ✍️ Author
 
-Tanmay Candan - [GitHub Profile](https://github.com/yourusername)
+Tanmay Chandan - [GitHub Profile](https://github.com/tanmayc31)
 
 ---
 
