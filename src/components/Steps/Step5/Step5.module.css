@@ -372,4 +372,34 @@
     flex-direction: column;
     align-items: stretch;
   }
+  .serviceTabs {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    border-bottom: none;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .tab {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-md);
+    border-bottom: 2px solid var(--border-gray);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .tab.active {
+    border-bottom-color: 2px var(--accent-blue);
+  }
+}
+
+@media (max-width: 480px) {
+  .serviceTabs {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .tab {
+    width: 100%;
+    text-align: center;
+    padding: var(--spacing-sm);
+  }
 }

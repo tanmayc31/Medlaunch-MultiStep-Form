@@ -100,3 +100,75 @@
 .continueButton:hover {
   background-color: #004494;
 }
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  .navigation {
+    width: 100%;
+    max-width: 960px;
+    padding: 0 var(--spacing-md);
+    margin: var(--spacing-lg) auto 0 auto;
+  }
+  
+  .rightButtons {
+    gap: var(--spacing-md);
+  }
+  
+  .exitButton,
+  .previousButton,
+  .saveButton,
+  .continueButton {
+    padding: 0px 20px;  /* Reduce padding */
+    font-size: 14px;    /* Smaller text */
+  }
+}
+
+@media (max-width: 600px) {
+  .navigation {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: stretch;
+    height: auto;
+  }
+  
+  .leftButtons,
+  .rightButtons {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .rightButtons {
+    gap: var(--spacing-sm);
+  }
+  
+  .exitButton,
+  .previousButton,
+  .saveButton,
+  .continueButton {
+    flex: 1;
+    min-width: 80px;
+    max-width: 150px;
+    padding: 0px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rightButtons {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .exitButton,
+  .previousButton,
+  .saveButton,
+  .continueButton {
+    width: 100%;
+    max-width: none;
+    padding: 12px 16px;
+  }
+  
+  .navigation {
+    gap: var(--spacing-lg);
+  }
+}
