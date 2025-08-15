@@ -6,7 +6,7 @@ import { useForm } from '../../../contexts/FormContext';
 
 const Step2 = () => {
 
-  const { nextStep, previousStep } = useForm();
+  const { formData, updateFormData, nextStep, previousStep } = useForm();
 
   const facilityTypes = [
     'Short-Term Acute Care',
@@ -37,7 +37,10 @@ const Step2 = () => {
                     name="facilityType"
                     value={type}
                     className={styles.radioInput}
+                    checked={formData.facilityType === type}
+                    onChange={(e) => updateFormData({ facilityType: e.target.value })}
                   />
+
                   <label
                     htmlFor={`facility-${index}`}
                     className={styles.radioLabel}

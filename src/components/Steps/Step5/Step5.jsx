@@ -8,21 +8,16 @@ const Step5 = () => {
 
     const [activeTab, setActiveTab] = useState('All Services');
     const [searchTerm, setSearchTerm] = useState('');
-    const [selectedServices, setSelectedServices] = useState([]);
-    const [servicesData, setServicesData] = useState({});
     const [showOtherService, setShowOtherService] = useState(false);
 
 
-    const [selectedStandards, setSelectedStandards] = useState([]);
-    const [thrombolyticDates, setThrombolyticDates] = useState([]);
-    const [thrombectomyDates, setThrombectomyDates] = useState([]);
 
     const serviceCategories = {
         'Emergency & Critical Care': [
             'Emergency Department',
             'Neonatal Intensive Care Services',
             'Pediatric Intensive Care Services',
-            'Pediatric Intensive Care Services'
+            'Pediatric Intensive Care Services2'
         ],
         'Cardiac Services': [
             'Cardiac Catheterization Laboratory',
@@ -35,40 +30,40 @@ const Step5 = () => {
         ]
     };
 
-   const handleServiceChange = (service, checked) => {
-  if (checked) {
-    // Add service with empty contact info
-    setServicesData({
-      ...servicesData,
-      [service]: {
-        selected: true,
-        contact: {
-          name: '',
-          phone: '',
-          email: ''
+    const handleServiceChange = (service, checked) => {
+        const currentServices = formData.servicesData || {};
+        if (checked) {
+            updateFormData({
+                servicesData: {
+                    ...currentServices,
+                    [service]: {
+                        selected: true,
+                        contact: { name: '', phone: '', email: '' }
+                    }
+                }
+            });
+        } else {
+            const newServices = { ...currentServices };
+            delete newServices[service];
+            updateFormData({ servicesData: newServices });
         }
-      }
-    });
-  } else {
-    // Remove service and its contact info
-    const newData = { ...servicesData };
-    delete newData[service];
-    setServicesData(newData);
-  }
-};
+    };
 
-const handleContactChange = (service, field, value) => {
-  setServicesData({
-    ...servicesData,
-    [service]: {
-      ...servicesData[service],
-      contact: {
-        ...servicesData[service].contact,
-        [field]: value
-      }
-    }
-  });
-};
+    const handleContactChange = (service, field, value) => {
+        const currentServices = formData.servicesData || {};
+        updateFormData({
+            servicesData: {
+                ...currentServices,
+                [service]: {
+                    ...currentServices[service],
+                    contact: {
+                        ...currentServices[service].contact,
+                        [field]: value
+                    }
+                }
+            }
+        });
+    };
 
     return (
         <div className={styles.step}>
@@ -103,75 +98,75 @@ const handleContactChange = (service, field, value) => {
 
                     {/* Service Categories */}
                     {/* Service Categories with Contact Forms */}
-<div className={styles.serviceGrid}>
-  {Object.entries(serviceCategories).map(([category, services]) => (
-    <div key={category} className={styles.serviceCategory}>
-      <h4 className={styles.categoryTitle}>{category}</h4>
-      
-      {services.map((service, index) => {
-        const isSelected = servicesData[service]?.selected || false;
-        
-        return (
-          <div key={index} className={styles.serviceBlock}>
-            {/* Checkbox */}
-            <div className={styles.serviceOption}>
-              <input 
-                type="checkbox"
-                id={`service-${category}-${index}`}
-                checked={isSelected}
-                onChange={(e) => handleServiceChange(service, e.target.checked)}
-              />
-              <label htmlFor={`service-${category}-${index}`}>
-                {service}
-              </label>
-            </div>
+                    <div className={styles.serviceGrid}>
+                        {Object.entries(serviceCategories).map(([category, services]) => (
+                            <div key={category} className={styles.serviceCategory}>
+                                <h4 className={styles.categoryTitle}>{category}</h4>
 
-            {/* Contact Form - appears when service is selected */}
-            {isSelected && (
-              <div className={styles.contactForm}>
-                <div className={styles.contactRow}>
-                  <div className={styles.contactField}>
-                    <label className={styles.contactLabel}>Contact Name:</label>
-                    <input 
-                      type="text"
-                      className={styles.contactInput}
-                      value={servicesData[service]?.contact?.name || ''}
-                      onChange={(e) => handleContactChange(service, 'name', e.target.value)}
-                      placeholder="Enter contact name"
-                    />
-                  </div>
-                </div>
-                
-                <div className={styles.contactRow}>
-                  <div className={styles.contactField}>
-                    <label className={styles.contactLabel}>Phone:</label>
-                    <input 
-                      type="tel"
-                      className={styles.contactInput}
-                      value={servicesData[service]?.contact?.phone || ''}
-                      onChange={(e) => handleContactChange(service, 'phone', e.target.value)}
-                      placeholder="Enter phone number"
-                    />
-                  </div>
-                  <div className={styles.contactField}>
-                    <label className={styles.contactLabel}>Email:</label>
-                    <input 
-                      type="email"
-                      className={styles.contactInput}
-                      value={servicesData[service]?.contact?.email || ''}
-                      onChange={(e) => handleContactChange(service, 'email', e.target.value)}
-                      placeholder="Enter email address"
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  ))}
-</div>
+                                {services.map((service, index) => {
+                                    const isSelected = formData.servicesData?.[service]?.selected || false;
+
+                                    return (
+                                        <div key={index} className={styles.serviceBlock}>
+                                            {/* Checkbox */}
+                                            <div className={styles.serviceOption}>
+                                                <input
+                                                    type="checkbox"
+                                                    id={`service-${category}-${index}`}
+                                                    checked={isSelected}
+                                                    onChange={(e) => handleServiceChange(service, e.target.checked)}
+                                                />
+                                                <label htmlFor={`service-${category}-${index}`}>
+                                                    {service}
+                                                </label>
+                                            </div>
+
+                                            {/* Contact Form - appears when service is selected */}
+                                            {isSelected && (
+                                                <div className={styles.contactForm}>
+                                                    <div className={styles.contactRow}>
+                                                        <div className={styles.contactField}>
+                                                            <label className={styles.contactLabel}>Contact Name:</label>
+                                                            <input
+                                                                type="text"
+                                                                className={styles.contactInput}
+                                                                value={formData.servicesData?.[service]?.contact?.name || ''}
+                                                                onChange={(e) => handleContactChange(service, 'name', e.target.value)}
+                                                                placeholder="Enter contact name"
+                                                            />
+                                                        </div>
+                                                    </div>
+
+                                                    <div className={styles.contactRow}>
+                                                        <div className={styles.contactField}>
+                                                            <label className={styles.contactLabel}>Phone:</label>
+                                                            <input
+                                                                type="tel"
+                                                                className={styles.contactInput}
+                                                                value={formData.servicesData?.[service]?.contact?.phone || ''}
+                                                                onChange={(e) => handleContactChange(service, 'phone', e.target.value)}
+                                                                placeholder="Enter phone number"
+                                                            />
+                                                        </div>
+                                                        <div className={styles.contactField}>
+                                                            <label className={styles.contactLabel}>Email:</label>
+                                                            <input
+                                                                type="email"
+                                                                className={styles.contactInput}
+                                                                value={formData.servicesData?.[service]?.contact?.email || ''}
+                                                                onChange={(e) => handleContactChange(service, 'email', e.target.value)}
+                                                                placeholder="Enter email address"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        ))}
+                    </div>
 
                     {/* Add Other Service */}
                     <button
@@ -203,16 +198,18 @@ const handleContactChange = (service, field, value) => {
                         </div>
                     )}
 
-                   
+
                     {/* Standards Dropdown Multi-Select */}
                     <div className={styles.formGroup}>
                         <label className={styles.label}>Standards to Apply</label>
                         <select
                             className={styles.select}
                             onChange={(e) => {
-                                if (e.target.value && !selectedStandards.includes(e.target.value)) {
-                                    setSelectedStandards([...selectedStandards, e.target.value]);
-                                    e.target.value = ''; // Reset dropdown
+                                if (e.target.value && !(formData.selectedStandards || []).includes(e.target.value)) {
+                                    updateFormData({
+                                        selectedStandards: [...(formData.selectedStandards || []), e.target.value]
+                                    });
+                                    e.target.value = '';
                                 }
                             }}
                         >
@@ -224,15 +221,17 @@ const handleContactChange = (service, field, value) => {
                         </select>
 
                         {/* Selected Standards Tags */}
-                        {selectedStandards.length > 0 && (
+                        {(formData.selectedStandards || []).length > 0 && (
                             <div className={styles.tagContainer}>
-                                {selectedStandards.map((standard, index) => (
+                                {(formData.selectedStandards || []).map((standard, index) => (
                                     <div key={index} className={styles.tag}>
                                         <span>{standard}</span>
                                         <button
                                             type="button"
                                             className={styles.tagRemove}
-                                            onClick={() => setSelectedStandards(selectedStandards.filter((_, i) => i !== index))}
+                                            onClick={() => updateFormData({
+                                                selectedStandards: (formData.selectedStandards || []).filter((_, i) => i !== index)
+                                            })}
                                         >
                                             ❌
                                         </button>
@@ -246,11 +245,21 @@ const handleContactChange = (service, field, value) => {
                     <div className={styles.formRow}>
                         <div className={styles.formGroup}>
                             <label className={styles.label}>Expiration Date of Current Stroke Certification</label>
-                            <input type="date" className={styles.input} />
+                            <input
+                                type="date"
+                                className={styles.input}
+                                value={formData.strokeCertificationExpiry || ''}
+                                onChange={(e) => updateFormData({ strokeCertificationExpiry: e.target.value })}
+                            />
                         </div>
                         <div className={styles.formGroup}>
                             <label className={styles.label}>Date of Application</label>
-                            <input type="date" className={styles.input} />
+                            <input
+                                type="date"
+                                className={styles.input}
+                                value={formData.applicationDate || ''}
+                                onChange={(e) => updateFormData({ applicationDate: e.target.value })}
+                            />
                         </div>
                     </div>
 
@@ -261,23 +270,27 @@ const handleContactChange = (service, field, value) => {
                             type="date"
                             className={styles.input}
                             onChange={(e) => {
-                                if (e.target.value && thrombolyticDates.length < 25 && !thrombolyticDates.includes(e.target.value)) {
-                                    setThrombolyticDates([...thrombolyticDates, e.target.value]);
-                                    e.target.value = ''; // Reset date picker
+                                if (e.target.value && (formData.thrombolyticDates || []).length < 25 && !(formData.thrombolyticDates || []).includes(e.target.value)) {
+                                    updateFormData({
+                                        thrombolyticDates: [...(formData.thrombolyticDates || []), e.target.value]
+                                    });
+                                    e.target.value = '';
                                 }
                             }}
                         />
 
                         {/* Selected Dates Tags */}
-                        {thrombolyticDates.length > 0 && (
+                        {(formData.thrombolyticDates || []).length > 0 && (
                             <div className={styles.tagContainer}>
-                                {thrombolyticDates.map((date, index) => (
+                                {(formData.thrombolyticDates || []).map((date, index) => (
                                     <div key={index} className={styles.tag}>
                                         <span>{date}</span>
                                         <button
                                             type="button"
                                             className={styles.tagRemove}
-                                            onClick={() => setThrombolyticDates(thrombolyticDates.filter((_, i) => i !== index))}
+                                            onClick={() => updateFormData({
+                                                thrombolyticDates: (formData.thrombolyticDates || []).filter((_, i) => i !== index)
+                                            })}
                                         >
                                             ❌
                                         </button>
@@ -285,7 +298,7 @@ const handleContactChange = (service, field, value) => {
                                 ))}
                             </div>
                         )}
-                        <p className={styles.helperText}>Selected: {thrombolyticDates.length}/25</p>
+                        <p className={styles.helperText}>Selected: {(formData.thrombolyticDates || []).length}/25</p>
                     </div>
                     {/* Thrombectomy Dates */}
                     <div className={styles.formGroup}>
@@ -294,23 +307,27 @@ const handleContactChange = (service, field, value) => {
                             type="date"
                             className={styles.input}
                             onChange={(e) => {
-                                if (e.target.value && thrombectomyDates.length < 15 && !thrombectomyDates.includes(e.target.value)) {
-                                    setThrombectomyDates([...thrombectomyDates, e.target.value]);
-                                    e.target.value = ''; // Reset date picker
+                                if (e.target.value && (formData.thrombectomyDates || []).length < 15 && !(formData.thrombectomyDates || []).includes(e.target.value)) {
+                                    updateFormData({
+                                        thrombectomyDates: [...(formData.thrombectomyDates || []), e.target.value]
+                                    });
+                                    e.target.value = '';
                                 }
                             }}
                         />
 
                         {/* Selected Dates Tags */}
-                        {thrombectomyDates.length > 0 && (
+                        {(formData.thrombectomyDates || []).length > 0 && (
                             <div className={styles.tagContainer}>
-                                {thrombectomyDates.map((date, index) => (
+                                {(formData.thrombectomyDates || []).map((date, index) => (
                                     <div key={index} className={styles.tag}>
                                         <span>{date}</span>
                                         <button
                                             type="button"
                                             className={styles.tagRemove}
-                                            onClick={() => setThrombectomyDates(thrombectomyDates.filter((_, i) => i !== index))}
+                                            onClick={() => updateFormData({
+                                                thrombectomyDates: (formData.thrombectomyDates || []).filter((_, i) => i !== index)
+                                            })}
                                         >
                                             ❌
                                         </button>
@@ -318,7 +335,7 @@ const handleContactChange = (service, field, value) => {
                                 ))}
                             </div>
                         )}
-                        <p className={styles.helperText}>Selected: {thrombectomyDates.length}/15</p>
+                        <p className={styles.helperText}>Selected: {(formData.thrombectomyDates || []).length}/15</p>
                     </div>
 
                 </section>

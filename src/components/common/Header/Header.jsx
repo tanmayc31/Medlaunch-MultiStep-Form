@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './HeaderWithUser.module.css';
+import styles from './Header.module.css';
 
-const HeaderWithUser = () => {
+const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -15,4 +15,4 @@ const HeaderWithUser = () => {
   );
 };
 
-export default HeaderWithUser;
+export default Header;

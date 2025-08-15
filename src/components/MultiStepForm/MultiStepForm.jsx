@@ -3,8 +3,7 @@ import styles from './MultiStepForm.module.css';
 import { useForm } from '../../contexts/FormContext';
 
 //Import all common components
-import HeaderWithUser from '../common/Header/HeaderWithUser';
-import HeaderWithoutUser from '../common/Header/HeaderWithoutUser';
+import Header from '../common/Header/Header';
 import ProgressBar from '../common/ProgressBar/ProgressBar';
 import SupportChat from '../common/SupportChat/SupportChat';
 
@@ -24,24 +23,13 @@ import Step6 from '../Steps/Step6/Step6';
 const MultiStepForm = () => {
   const { currentStep, formData, showStep2IfYes } = useForm();
 
-  // which header to show
-  const renderHeader = () => {
-    if (currentStep === 1) {
-      return <HeaderWithUser />;
-    } else {
-      return <HeaderWithoutUser />;
-    }
-  };
-
   // Determine which step to show
   const renderStep = () => {
     switch (currentStep) {
       case 1:
         return <Step1 />;
       case 2:
-        // For now, let's use regular Step2
-        // Later we'll add logic for "If Yes" version
-        return showStep2IfYes() ? <Step2IfYes /> : <Step2 />;
+        return showStep2IfYes() ? <Step2IfYes /> : <Step2 />;     // which step2 to show based on condition
       case 3:
         return <Step3 />;
       case 4:
@@ -57,7 +45,8 @@ const MultiStepForm = () => {
 
   return (
     <div className={styles.container}>
-      {renderHeader()}
+      {/* {renderHeader()} */}
+      <Header />
       <ProgressBar currentStep={currentStep} />
       {renderStep()}
       <SupportChat />

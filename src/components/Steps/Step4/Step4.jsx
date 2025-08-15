@@ -5,28 +5,26 @@ import { useForm } from '../../../contexts/FormContext';
 
 const Step4 = () => {
     const { formData, updateFormData, nextStep, previousStep } = useForm();
-    const [selectedLocation, setSelectedLocation] = useState('');
-    const [uploadedFiles, setUploadedFiles] = useState([]);
 
     const handleLocationSelect = (locationType) => {
-        setSelectedLocation(locationType);
-        updateFormData({ locationType });
-    };
-
+    updateFormData({ locationType });
+};
     const handleFileUpload = (event) => {
-        const files = Array.from(event.target.files);
-        const newFiles = files.map(file => ({
-            name: file.name,
-            size: (file.size / (1024 * 1024)).toFixed(1) + 'MB',
-            file: file
-        }));
-        setUploadedFiles([...uploadedFiles, ...newFiles]);
-    };
+    const files = Array.from(event.target.files);
+    const newFiles = files.map(file => ({
+        name: file.name,
+        size: (file.size / (1024 * 1024)).toFixed(1) + 'MB',
+        file: file
+    }));
+    updateFormData({ 
+        uploadedFiles: [...(formData.uploadedFiles || []), ...newFiles] 
+    });
+};
 
     const handleFileRemove = (index) => {
-        const newFiles = uploadedFiles.filter((_, i) => i !== index);
-        setUploadedFiles(newFiles);
-    };
+    const newFiles = formData.uploadedFiles.filter((_, i) => i !== index);
+    updateFormData({ uploadedFiles: newFiles });
+};
 
     return (
         <div className={styles.step}>
@@ -37,7 +35,7 @@ const Step4 = () => {
 
                     <div className={styles.locationOptions}>
                         <div 
-                            className={`${styles.locationCard} ${selectedLocation === 'single' ? styles.selected : ''}`}
+                            className={`${styles.locationCard} ${formData.locationType === 'single' ? styles.selected : ''}`}
                             onClick={() => handleLocationSelect('single')}
                         >
                             <h4 className={styles.cardTitle}>Single Location</h4>
@@ -45,7 +43,7 @@ const Step4 = () => {
                         </div>
 
                         <div 
-                            className={`${styles.locationCard} ${selectedLocation === 'multiple' ? styles.selected : ''}`}
+                            className={`${styles.locationCard} ${formData.locationType === 'multiple' ? styles.selected : ''}`}
                             onClick={() => handleLocationSelect('multiple')}
                         >
                             <h4 className={styles.cardTitle}>Multiple Locations</h4>
@@ -54,7 +52,7 @@ const Step4 = () => {
                     </div>
 
                     {/* Show upload section only when Multiple Locations is selected */}
-                    {selectedLocation === 'multiple' && (
+                    {formData.locationType === 'multiple' && (
                         <div className={styles.uploadSection}>
                             <h3 className={styles.sectionTitle}>How would you like to add your site information?</h3>
                             
@@ -89,10 +87,10 @@ const Step4 = () => {
                                 </div>
 
                                 {/* Show uploaded files */}
-                                {uploadedFiles && (
+                                {(formData.uploadedFiles || []).length > 0 && (
                                     <div className={styles.uploadedSection}>
                                         <h4 className={styles.uploadedTitle}>Uploaded</h4>
-                                        {uploadedFiles.map((file, index) => (
+                                        {(formData.uploadedFiles || []).map((file, index) => (
                                             <div key={index} className={styles.fileItem}>
                                                 <div className={styles.fileInfo}>
                                                     <span className={styles.fileIcon}>📄</span>

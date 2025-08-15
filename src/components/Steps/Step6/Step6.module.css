@@ -17,6 +17,12 @@
   box-shadow: var(--shadow-sm);
 }
 
+.noData {
+  color: var(--dark-gray);
+  font-style: italic;
+  font-size: var(--font-size-small);
+}
+
 /* Main Sections */
 .mainSection {
   margin-bottom: var(--spacing-xl);

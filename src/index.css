@@ -22,9 +22,10 @@
   --font-size-3xl: 2rem;
   
   /* typography */
-  --header-title-size: 20px;
-  --header-title-line-height: 100%;
-  --header-title-letter-spacing: 0px;
+ --header-title-size: 20px;
+--header-title-weight: 700;
+--header-title-line-height: 100%;
+--header-title-letter-spacing: 0px;
   
   --header-name-size: 16px;
   --header-name-weight: 700;
@@ -32,13 +33,13 @@
   --header-name-letter-spacing: 0px;
   
   /* Avatar */
-  --avatar-width: 28px;
-  --avatar-height: 25px;
-  --avatar-font-size: 18px;
-  --avatar-font-weight: 700;
-  --avatar-line-height: 100%;
-  --avatar-letter-spacing: 0px;
-  
+  --avatar-width: 40px;
+--avatar-height: 40px;
+--avatar-font-size: 18px;
+--avatar-font-weight: 700;
+--avatar-line-height: 100%;
+--avatar-letter-spacing: 0px;
+
   /* Spacing */
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;

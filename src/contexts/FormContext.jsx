@@ -7,17 +7,58 @@ export function FormProvider({ children }) {
   const [formData, setFormData] = useState({
     // Step 1 data
     legalEntityName: '',
-    doingBusinessAs: '',
-    sameAsLegalEntity: false,
-    firstName: '',
-    lastName: '',
-    title: '',
-    workPhone: '',
-    cellPhone: '',
-    email: '',
+  doingBusinessAs: '',
+  sameAsLegalEntity: false,
+  firstName: '',
+  lastName: '',
+  title: '',
+  workPhone: '',
+  cellPhone: '',
+  email: '',
+  emailVerified: false,
     
     // Step 2 data
     facilityType: '',
+
+// Step 3 data
+    ceoContact: { 
+    firstName: '', 
+    lastName: '', 
+    phone: '', 
+    email: '', 
+    sameAsPrimary: false 
+  },
+  qualityContact: { 
+    firstName: '', 
+    lastName: '', 
+    phone: '', 
+    email: '', 
+    sameAsPrimary: false 
+  },
+  invoicingContact: { 
+    firstName: '', 
+    lastName: '', 
+    phone: '', 
+    email: '', 
+    title: '', 
+    streetAddress: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    sameAsPrimary: false 
+  },
+
+  // Step 4 data
+  locationType: '',
+  uploadedFiles: [],
+  
+  // Step 5 data
+  servicesData: {},
+  selectedStandards: [],
+  applicationDate: '',
+  strokeCertificationExpiry: '',
+  thrombolyticDates: [],
+  thrombectomyDates: []
   });
 
 

@@ -6,7 +6,7 @@ import { useForm } from '../../../contexts/FormContext';
 
 const Step2IfYes = () => {
 
-  const { nextStep, previousStep } = useForm();
+  const { formData, updateFormData, nextStep, previousStep } = useForm();
 
   const facilityTypesIfYes = [
     'Same as Legal Entity Name',
@@ -37,6 +37,8 @@ const Step2IfYes = () => {
                     name="facilityTypeIfYes"
                     value={type}
                     className={styles.radioInput}
+                    checked={formData.facilityType === type}
+                    onChange={(e) => updateFormData({ facilityType: e.target.value })}
                   />
                   <label
                     htmlFor={`facility-if-yes-${index}`}
