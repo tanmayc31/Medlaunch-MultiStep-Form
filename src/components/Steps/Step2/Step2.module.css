@@ -71,3 +71,15 @@
 .radioLabel:hover {
   color: var(--accent-blue);
 }
+
+.fieldLabel .required {
+    color: #EF4444;
+    margin-left: 2px;
+}
+
+.errorText {
+    color: #EF4444;
+    font-size: var(--font-size-small);
+    margin-top: var(--spacing-xs);
+    display: block;
+}

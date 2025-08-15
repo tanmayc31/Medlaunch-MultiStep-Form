@@ -138,3 +138,33 @@
   float: right;
   /* margin-left: 300px; */
 }
+
+/* Error Handling */
+
+/* Red Asterisk for Required Fields */
+.label {
+  display: block;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.label .required {
+  color: #EF4444;  /* Red color for asterisk */
+  margin-left: 2px;
+}
+
+.input.error {
+  border-color: #EF4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.errorText {
+  color: #EF4444;
+  font-size: var(--font-size-small);
+  margin-top: var(--spacing-xs);
+  display: block;
+}
+
