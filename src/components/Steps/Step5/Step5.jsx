@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import styles from './Step5.module.css';
 import Navigation from '../../common/Navigation/Navigation';
 import { useForm } from '../../../contexts/FormContext';
+import CancelIcon from '@mui/icons-material/Cancel';
+import ClearIcon from '@mui/icons-material/Clear';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Step5 = () => {
     const { formData, updateFormData, nextStep, previousStep } = useForm();
@@ -74,7 +77,6 @@ const Step5 = () => {
                     <p className={styles.sectionSubtitle}>Primary Site Service offering</p>
 
                     {/* Service Tabs */}
-                    {/* Service Tabs */}
                     <div className={styles.serviceTabs}>
                         {['All Services', 'Clinical', 'Surgical', 'Diagnostic', 'Rehabilitation', 'Specialty'].map(tab => (
                             <button
@@ -93,10 +95,9 @@ const Step5 = () => {
                             placeholder="Search services..."
                             className={styles.searchInput}
                         />
-                        <span className={styles.searchIcon}>🔍</span>
+                        <SearchIcon className={styles.searchIcon} />
                     </div>
 
-                    {/* Service Categories */}
                     {/* Service Categories with Contact Forms */}
                     <div className={styles.serviceGrid}>
                         {Object.entries(serviceCategories).map(([category, services]) => (
@@ -121,7 +122,7 @@ const Step5 = () => {
                                                 </label>
                                             </div>
 
-                                            {/* Contact Form - appears when service is selected */}
+                                            {/* Contact Form - appears when cewrtificate/service is selected */}
                                             {isSelected && (
                                                 <div className={styles.contactForm}>
                                                     <div className={styles.contactRow}>
@@ -224,16 +225,16 @@ const Step5 = () => {
                         {(formData.selectedStandards || []).length > 0 && (
                             <div className={styles.tagContainer}>
                                 {(formData.selectedStandards || []).map((standard, index) => (
-                                    <div key={index} className={styles.tag}>
+                                    <div key={index} className={styles.standardTag}>
                                         <span>{standard}</span>
                                         <button
                                             type="button"
-                                            className={styles.tagRemove}
+                                            className={styles.standardTagRemove}
                                             onClick={() => updateFormData({
                                                 selectedStandards: (formData.selectedStandards || []).filter((_, i) => i !== index)
                                             })}
                                         >
-                                            ❌
+                                            <ClearIcon />
                                         </button>
                                     </div>
                                 ))}
@@ -241,7 +242,7 @@ const Step5 = () => {
                         )}
                     </div>
 
-                    {/* Date Fields - Simplified */}
+                    {/* Date Fields*/}
                     <div className={styles.formRow}>
                         <div className={styles.formGroup}>
                             <label className={styles.label}>Expiration Date of Current Stroke Certification</label>
@@ -292,7 +293,7 @@ const Step5 = () => {
                                                 thrombolyticDates: (formData.thrombolyticDates || []).filter((_, i) => i !== index)
                                             })}
                                         >
-                                            ❌
+                                            < CancelIcon />
                                         </button>
                                     </div>
                                 ))}
@@ -329,7 +330,7 @@ const Step5 = () => {
                                                 thrombectomyDates: (formData.thrombectomyDates || []).filter((_, i) => i !== index)
                                             })}
                                         >
-                                            ❌
+                                            < CancelIcon />
                                         </button>
                                     </div>
                                 ))}

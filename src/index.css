@@ -1,14 +1,15 @@
 :root {
   /* Colors stay the same */
-  --main-header-blue: #002E55;
+  --header-blue: #002E55;
   --primary-blue: #1A3A70;
   --accent-blue: #0056A3;
   --light-gray: #F8F9FA;
   --medium-gray: #D6D6D6;
   --dark-gray: #707070;
-  --text-dark: #1F2937;
+  --dark-gray2:#4E4E4E;
+  --text-dark: #343434;
   --white: #FFFFFF;
-  --border-gray: #D1D5DB;
+  --border-gray: #BBBBBB;
   --warning-orange: #A16800;
   
   /* Typography */
@@ -41,6 +42,7 @@
 --avatar-letter-spacing: 0px;
 
   /* Spacing */
+  --spacing-xxs: 0.094
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
@@ -51,9 +53,13 @@
   --radius-sm: 0.25rem;
   --radius-md: 0.375rem;
   --radius-lg: 0.5rem;
-  
+  --radius-xl: 0.625rem;
+
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+  /* Progress */
+  --progress-title-size: 32px;
 }
 
 /* Base styles */

@@ -9,6 +9,7 @@
   margin: 0 auto;
 }
 
+/* Section styling */
 .section {
   background-color: var(--white);
   border-radius: var(--radius-lg);
@@ -19,10 +20,10 @@
 
 .sectionTitle {
   font-family: var(--font-family);
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-2xl);
   font-weight: 600;
-  color: var(--text-dark);
-  margin: 0 0 var(--spacing-lg) 0;
+  color: var(--dark-gray2);
+  margin: 0 0 var(--spacing-sm) 0;
 }
 
 .sectionSubtitle {
@@ -69,12 +70,20 @@
 
 .searchInput {
   width: 100%;
-  padding: var(--spacing-md);
-  padding-right: 40px;
+  height: 44px;
+  padding: 0px;
   border: 1px solid var(--border-gray);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xl);
   font-family: var(--font-family);
   font-size: var(--font-size-base);
+  padding-left: var(--spacing-md);
+  padding-right: 40px;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(0, 86, 163, 0.1);
 }
 
 .searchIcon {
@@ -95,7 +104,7 @@
 
 .serviceCategory {
   border: 1px solid var(--border-gray);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xl);
   padding: var(--spacing-lg);
   background-color: var(--white);
 }
@@ -139,7 +148,7 @@
   margin-top: var(--spacing-sm);
   padding: var(--spacing-md);
   background-color: #F8F9FA;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xl);
 }
 
 .contactRow {
@@ -163,11 +172,13 @@
 
 .contactInput {
   width: 100%;
-  padding: var(--spacing-sm);
+  height: 44px;
+  padding: 0px;
   border: 1px solid var(--border-gray);
   border-radius: var(--radius-sm);
   font-family: var(--font-family);
   font-size: var(--font-size-small);
+  padding-left: var(--spacing-sm);
 }
 
 .contactInput:focus {
@@ -178,14 +189,15 @@
 /* Add Service Button */
 .addServiceButton {
   background: none;
-  border: 1px solid var(--accent-blue);
+  border: 2px solid var(--accent-blue);
   color: var(--accent-blue);
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--radius-md);
+  padding: 8px 24px;
+  border-radius: var(--radius-xl);
   font-family: var(--font-family);
   font-size: var(--font-size-base);
   cursor: pointer;
   margin-bottom: var(--spacing-lg);
+  font-weight: 600;
 }
 
 .addServiceButton:hover {
@@ -196,10 +208,10 @@
 /* Other Service Section */
 .otherServiceSection {
   border: 1px solid var(--border-gray);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xl);
   padding: var(--spacing-lg);
   margin-bottom: var(--spacing-lg);
-  background-color: #FFF9E6;
+
 }
 
 .otherServiceInput {
@@ -210,6 +222,9 @@
 
 .otherServiceInput .input {
   flex: 1;
+  height: 44px;
+  padding: 0px;
+  padding-left: var(--spacing-md);
 }
 
 .removeButton {
@@ -234,25 +249,29 @@
   flex: 1;
 }
 
+/* Label styling */
 .label {
   display: block;
   font-family: var(--font-family);
-  font-size: var(--font-size-base);
-  font-weight: 500;
+  font-size: var(--font-size-large);
+  font-weight: 600;
   color: var(--text-dark);
   margin-bottom: var(--spacing-sm);
 }
 
+/* Input styling */
 .input,
 .select {
   width: 100%;
-  padding: var(--spacing-md);
+  height: 44px;
+  padding: 0px var(--spacing-sm);
   border: 1px solid var(--border-gray);
   border-radius: var(--radius-md);
   font-family: var(--font-family);
   font-size: var(--font-size-base);
-  color: var(--text-dark);
+  color: var(--dark-gray);
   background-color: var(--white);
+  /* padding-left: var(--spacing-md); */
 }
 
 .input:focus,
@@ -277,10 +296,10 @@
   gap: var(--spacing-xs);
   background-color: var(--accent-blue);
   color: var(--white);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: 20px;
+  padding: 6px 12px;
+  border-radius: var(--radius-lg);
   font-family: var(--font-family);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-base);
   font-weight: 500;
 }
 
@@ -289,9 +308,38 @@
   border: none;
   color: var(--white);
   cursor: pointer;
-  font-size: 12px;
-  padding: 0;
-  margin-left: var(--spacing-xs);
+  /* font-size: 14px; */
+  padding-top: 3px;
+  margin-left: var(--spacing-sm);
+}
+
+/* Standard Tags - Blue Outline (for standards) */
+.standardTag {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background-color: var(--white);
+  color: var(--accent-blue);
+  border: 1px solid var(--accent-blue);
+  padding: 6px 12px;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+}
+
+.standardTagRemove {
+  background: none;
+  border: none;
+  color: var(--accent-blue);
+  cursor: pointer;
+  /* font-size: 12px; */
+  padding-top: 3px;
+  margin-left: var(--spacing-sm);
+}
+
+.standardTagRemove:hover {
+  opacity: 0.7;
 }
 
 .tagRemove:hover {
@@ -310,7 +358,6 @@
   line-height: 1.6;
 }
 
-
 /* Responsive */
 @media (max-width: 768px) {
   .serviceGrid {
@@ -326,4 +373,3 @@
     align-items: stretch;
   }
 }
-

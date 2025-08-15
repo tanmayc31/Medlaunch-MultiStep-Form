@@ -4,7 +4,7 @@ import Navigation from '../../common/Navigation/Navigation';
 import { useForm } from '../../../contexts/FormContext';
 
 const Step6 = () => {
-    const { formData, previousStep } = useForm();
+    const { formData, previousStep, goToStep } = useForm();
     const [certificationChecked, setCertificationChecked] = useState(false);
 
     const [collapsedSections, setCollapsedSections] = useState({
@@ -45,7 +45,15 @@ const Step6 = () => {
                                     {collapsedSections.basicInfo ? '▼' : '▲'}
                                 </span>
                                 <h4 className={styles.sectionTitle}>Basic Information</h4>
-                                <button className={styles.editButton}>Edit</button>
+                                <button 
+  className={styles.editButton}
+  onClick={(e) => {
+    e.stopPropagation();  // Prevent section collapse
+    goToStep(1);          // Go to Step 1
+  }}
+>
+  Edit
+</button>
                             </div>
                             {!collapsedSections.basicInfo && (
                                 <div className={styles.sectionContent}>
@@ -71,7 +79,7 @@ const Step6 = () => {
                                                             <span className={styles.verified}>Verified</span>
                                                         )}
                                                     </div>
-                                                    <div className={styles.contactInfo}>Address: 123 Healthcare Way, Medical City, ST 12345</div>
+                                                    {/* <div className={styles.contactInfo}>Address: 123 Healthcare Way, Medical City, ST 12345</div> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -87,7 +95,16 @@ const Step6 = () => {
                                     {collapsedSections.facilityDetails ? '▼' : '▲'}
                                 </span>
                                 <h4 className={styles.sectionTitle}>Facility Details</h4>
-                                <button className={styles.editButton}>Edit</button>
+                                <button 
+  className={styles.editButton}
+  onClick={(e) => {
+    e.stopPropagation();
+    goToStep(2);
+  }}
+>
+  Edit
+</button>
+
                             </div>
                             {!collapsedSections.facilityDetails && (
                                 <div className={styles.sectionContent}>
@@ -108,7 +125,15 @@ const Step6 = () => {
                                     {collapsedSections.leadershipContacts ? '▼' : '▲'}
                                 </span>
                                 <h4 className={styles.sectionTitle}>Leadership Contacts</h4>
-                                <button className={styles.editButton}>Edit</button>
+                                <button 
+  className={styles.editButton}
+  onClick={(e) => {
+    e.stopPropagation();
+    goToStep(3);
+  }}
+>
+  Edit
+</button>
                             </div>
                             {!collapsedSections.leadershipContacts && (
                                 <div className={styles.sectionContent}>
@@ -165,7 +190,15 @@ const Step6 = () => {
                                     {collapsedSections.siteInformation ? '▼' : '▲'}
                                 </span>
                                 <h4 className={styles.sectionTitle}>Site Information</h4>
-                                <button className={styles.editButton}>Edit</button>
+                                <button 
+  className={styles.editButton}
+  onClick={(e) => {
+    e.stopPropagation();
+    goToStep(4);
+  }}
+>
+  Edit
+</button>
                             </div>
                             {!collapsedSections.siteInformation && (
                                 <div className={styles.sectionContent}>
@@ -203,68 +236,85 @@ const Step6 = () => {
                         </div>
 
                         {/* Services & Certifications */}
-                        {!collapsedSections.servicesCertifications && (
-                            <div className={styles.sectionContent}>
-                                <div className={styles.infoTable}>
-                                    <div className={styles.infoRow}>
-                                        <div className={styles.label}>Services Provided</div>
-                                        <div className={styles.value}>
-                                            <div className={styles.tagContainer}>
-                                                {Object.keys(formData.servicesData || {}).map(service => (
-                                                    <span key={service} className={styles.serviceTagOutlined}>{service}</span>
-                                                ))}
-                                                {Object.keys(formData.servicesData || {}).length === 0 && (
-                                                    <span className={styles.noData}>No services selected</span>
-                                                )}
+                        <div className={styles.section}>
+                            <div className={styles.sectionHeader} onClick={() => toggleSection('servicesCertifications')} >
+                                <span className={styles.collapseIcon}>
+                                    {collapsedSections.servicesCertifications ? '▼' : '▲'}
+                                </span>
+                                <h4 className={styles.sectionTitle}>Services & Certifications</h4>
+                                <button 
+  className={styles.editButton}
+  onClick={(e) => {
+    e.stopPropagation();
+    goToStep(5);
+  }}
+>
+  Edit
+</button>
+                            </div>
+                            {!collapsedSections.servicesCertifications && (
+                                <div className={styles.sectionContent}>
+                                    <div className={styles.infoTable}>
+                                        <div className={styles.infoRow}>
+                                            <div className={styles.label}>Services Provided</div>
+                                            <div className={styles.value}>
+                                                <div className={styles.tagContainer}>
+                                                    {Object.keys(formData.servicesData || {}).map(service => (
+                                                        <span key={service} className={styles.serviceTagOutlined}>{service}</span>
+                                                    ))}
+                                                    {Object.keys(formData.servicesData || {}).length === 0 && (
+                                                        <span className={styles.noData}>No services selected</span>
+                                                    )}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className={styles.infoRow}>
-                                        <div className={styles.label}>Standards to Apply</div>
-                                        <div className={styles.value}>
-                                            <div className={styles.tagContainer}>
-                                                {(formData.selectedStandards || []).map((standard, index) => (
-                                                    <span key={index} className={styles.serviceTagOutlined}>{standard}</span>
-                                                ))}
-                                                {(!formData.selectedStandards || formData.selectedStandards.length === 0) && (
-                                                    <span className={styles.noData}>No standards selected</span>
-                                                )}
+                                        <div className={styles.infoRow}>
+                                            <div className={styles.label}>Standards to Apply</div>
+                                            <div className={styles.value}>
+                                                <div className={styles.tagContainer}>
+                                                    {(formData.selectedStandards || []).map((standard, index) => (
+                                                        <span key={index} className={styles.serviceTagOutlined}>{standard}</span>
+                                                    ))}
+                                                    {(!formData.selectedStandards || formData.selectedStandards.length === 0) && (
+                                                        <span className={styles.noData}>No standards selected</span>
+                                                    )}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className={styles.infoRow}>
-                                        <div className={styles.label}>Date of Application</div>
-                                        <div className={styles.value}>{formData.applicationDate || 'Not provided'}</div>
-                                    </div>
-                                    <div className={styles.infoRow}>
-                                        <div className={styles.label}>Expiration Date of Current Stroke Certification</div>
-                                        <div className={styles.value}>{formData.strokeCertificationExpiry || 'Not provided'}</div>
-                                    </div>
-                                    <div className={styles.infoRow}>
-                                        <div className={styles.label}>Dates of last twenty-five thrombolytic administrations</div>
-                                        <div className={styles.value}>
-                                            <div className={styles.dateList}>
-                                                {(formData.thrombolyticDates || []).length > 0 ?
-                                                    formData.thrombolyticDates.join(', ') :
-                                                    'No dates provided'
-                                                }
+                                        <div className={styles.infoRow}>
+                                            <div className={styles.label}>Date of Application</div>
+                                            <div className={styles.value}>{formData.applicationDate || 'Not provided'}</div>
+                                        </div>
+                                        <div className={styles.infoRow}>
+                                            <div className={styles.label}>Expiration Date of Current Stroke Certification</div>
+                                            <div className={styles.value}>{formData.strokeCertificationExpiry || 'Not provided'}</div>
+                                        </div>
+                                        <div className={styles.infoRow}>
+                                            <div className={styles.label}>Dates of last twenty-five thrombolytic administrations</div>
+                                            <div className={styles.value}>
+                                                <div className={styles.dateList}>
+                                                    {(formData.thrombolyticDates || []).length > 0 ?
+                                                        formData.thrombolyticDates.join(', ') :
+                                                        'No dates provided'
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className={styles.infoRow}>
-                                        <div className={styles.label}>Dates of last fifteen thrombectomies</div>
-                                        <div className={styles.value}>
-                                            <div className={styles.dateList}>
-                                                {(formData.thrombectomyDates || []).length > 0 ?
-                                                    formData.thrombectomyDates.join(', ') :
-                                                    'No dates provided'
-                                                }
+                                        <div className={styles.infoRow}>
+                                            <div className={styles.label}>Dates of last fifteen thrombectomies</div>
+                                            <div className={styles.value}>
+                                                <div className={styles.dateList}>
+                                                    {(formData.thrombectomyDates || []).length > 0 ?
+                                                        formData.thrombectomyDates.join(', ') :
+                                                        'No dates provided'
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        )}
+                            )}
+                        </div>
                     </div>
 
                     {/* Ready to Submit Section */}

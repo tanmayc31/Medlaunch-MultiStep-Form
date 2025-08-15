@@ -1,45 +1,94 @@
 .navigation {
+  width: 960px;
+  height: 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: var(--spacing-xl);
+  margin: var(--spacing-xl) auto 0 auto;  /* Center the navigation */
   padding-top: var(--spacing-lg);
 }
 
 .leftButtons {
   display: flex;
-  gap: var(--spacing-md);
 }
 
 .rightButtons {
   display: flex;
-  gap: var(--spacing-md);
+  gap: var(--spacing-xl);
 }
 
-/* Button base styles */
-.exitButton,
-.previousButton {
+/* Exit Button */
+.exitButton {
+  /* width: 93px; */
+  height: 48px;
   background-color: var(--white);
-  color: var(--dark-gray);
-  border: 1px solid var(--border-gray);
-  padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: var(--radius-md);
+  color: var(--accent-blue);
+  border: 1.5px solid var(--accent-blue);
+  border-radius: 8px;
+  padding: 0px 32px;
   font-family: var(--font-family);
-  font-size: var(--font-size-base);
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0px;
+  text-align: center;
+  cursor: pointer;
 }
 
-.saveButton,
-.continueButton {
+/* Previous Button */
+.previousButton {
+  /* width: 128px; */
+  height: 48px;
+  background-color: var(--white);
+  color: var(--accent-blue);
+  border: 1.5px solid var(--accent-blue);
+  border-radius: 8px;
+  padding: 0px 32px;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Save Button */
+.saveButton {
+  /* width: 100px; */
+  height: 48px;
   background-color: var(--accent-blue);
   color: var(--white);
   border: none;
-  padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: var(--radius-md);
+  border-radius: 8px;
+  padding: 0px 32px;
   font-family: var(--font-family);
-  font-size: var(--font-size-base);
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0px;
+  text-align: center;
+  cursor: pointer;
 }
+
+/* Continue Button */
+.continueButton {
+  /* width: 131px; */
+  height: 48px;
+  background-color: var(--accent-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 0px 32px;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0px;
+  text-align: center;
+  cursor: pointer;
+}
+
 
 /* Hover effects */
 .exitButton:hover,

@@ -20,9 +20,9 @@
 
 .sectionTitle {
   font-family: var(--font-family);
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-2xl);
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--dark-gray2);
   margin: 0 0 var(--spacing-lg) 0;
 }
 
@@ -35,16 +35,16 @@
   display: block;
   font-family: var(--font-family);
   font-size: var(--font-size-base);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-dark);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
 }
 
 /* Radio group styling */
 .radioGroup {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  /* gap: var(--spacing-md); */
 }
 
 .radioOption {
@@ -65,7 +65,7 @@
   font-size: var(--font-size-base);
   color: var(--text-dark);
   cursor: pointer;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .radioLabel:hover {

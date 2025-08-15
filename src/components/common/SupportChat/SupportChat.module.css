@@ -5,14 +5,17 @@
   background-color: var(--accent-blue);
   color: var(--white);
   border: none;
-  border-radius: 25px;
-  padding: var(--spacing-md) var(--spacing-lg);
+  width: 201px;
+  height: 48px;
+  border-radius: 100px;
+  padding: 12px 36px 12px 32px;
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: 8px;
   font-family: var(--font-family);
-  font-size: var(--font-size-base);
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 100%;
   box-shadow: var(--shadow-md);
   z-index: 1000;
 }
@@ -23,4 +26,5 @@
 
 .icon {
   font-size: var(--font-size-large);
+  
 }

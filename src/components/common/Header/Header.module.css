@@ -1,13 +1,16 @@
 .header {
-  background-color: var(--main-header-blue);
+  background-color: var(--header-blue);
   color: var(--white);
   width: 100%;
-  padding: var(--spacing-md) 0;
+  height: 72px;
+  border-bottom: 1px solid var(--border-gray);
+  display: flex;
+  align-items: center;
 }
 
 .container {
   width: 100%;
-  padding: 0 var(--spacing-lg);
+  padding: 16px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,6 +19,7 @@
 .title {
   font-family: var(--font-family);
   font-size: var(--header-title-size);
+  font-weight: var(--header-title-weight);
   line-height: var(--header-title-line-height);
   letter-spacing: var(--header-title-letter-spacing);
   margin: 0;
@@ -24,12 +28,12 @@
 .userInfo {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: 23px;
 }
 
 .avatar {
-  width: 32px;
-  height: 32px;
+  width: var(--avatar-width);
+  height: var(--avatar-height);
   border-radius: 50%;
   background-color: var(--white);
   color: var(--primary-blue);
@@ -37,15 +41,18 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-family);
-  font-size: 14px;
+  font-size: var(--avatar-font-size);
   font-weight: var(--avatar-font-weight);
-  line-height: 1;
+  line-height: var(--avatar-line-height);
+  letter-spacing: var(--avatar-letter-spacing);
   flex-shrink: 0;
 }
 
 .userName {
   font-family: var(--font-family);
   font-size: var(--header-name-size);
+  font-weight: var(--header-name-weight);
   line-height: var(--header-name-line-height);
   letter-spacing: var(--header-name-letter-spacing);
+  white-space: nowrap;
 }

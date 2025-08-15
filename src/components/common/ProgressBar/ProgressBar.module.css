@@ -1,10 +1,17 @@
 .progressBar {
-  background-color: var(--light-gray);
+  border-radius: 8px; 
+  padding: 16px;
+  height: 123px;
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
 }
 
 /* Title Section */
 .titleSection {
-  padding: var(--spacing-lg) 0;
+  height: 44px;
+  padding: 0;  
+  margin-bottom: 16px;
+  margin-top: 16px;
 }
 
 .container {
@@ -17,22 +24,24 @@
 
 .title {
   font-family: var(--font-family);
-  font-size: var(--font-size-2xl);
-  font-weight: 600;
-  color: var(--text-dark);
-  margin: 0;
+  font-size: 32px;
+  font-weight: 700;   
+  line-height: 100%;  
+  color: var(--dark-gray2);
+
 }
 
 .stepText {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
-  color: var(--dark-gray);
+  color: var(--dark-gray2);
   font-weight: 400;
 }
 
 /* Progress Lines Section */
 .progressSection {
-  padding-bottom: var(--spacing-lg);
+  padding-bottom: 0;  /* Remove var(--spacing-lg) */
+  height: 31px; 
 }
 
 .progressLines {
@@ -46,6 +55,7 @@
   flex-direction: column;
   align-items: center;
   flex: 1;
+  
 }
 
 .progressLineWrapper {
@@ -88,5 +98,5 @@
   font-size: var(--font-size-xsmall);
   color: var(--dark-gray);
   text-align: center;
-  font-weight: 400;
+  font-weight: 600;
 }

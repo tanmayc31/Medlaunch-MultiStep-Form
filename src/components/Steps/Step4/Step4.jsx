@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import styles from './Step4.module.css';
 import Navigation from '../../common/Navigation/Navigation';
 import { useForm } from '../../../contexts/FormContext';
+import CloudUploadOutlinedIcon from '@mui/icons-material/CloudUploadOutlined';
+import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
+import CancelIcon from '@mui/icons-material/Cancel';
+
 
 const Step4 = () => {
     const { formData, updateFormData, nextStep, previousStep } = useForm();
@@ -59,9 +63,10 @@ const Step4 = () => {
                             <div className={styles.uploadCard}>
                                 <h4 className={styles.uploadTitle}>Upload CSV / Excel</h4>
                                 <p className={styles.uploadDescription}>Upload a spreadsheet with all site information</p>
-
+                           </div>
+                           <div className={styles.uploadCard}>
                                 <div className={styles.dropZone}>
-                                    <div className={styles.uploadIcon}>⬆️</div>
+                                     <CloudUploadOutlinedIcon className={styles.uploadIcon} />
                                     <p className={styles.dropText}>Upload Site Information</p>
                                     <p className={styles.dropSubtext}>Drag and drop your CSV or Excel file here, or click to select</p>
                                     
@@ -93,8 +98,9 @@ const Step4 = () => {
                                         {(formData.uploadedFiles || []).map((file, index) => (
                                             <div key={index} className={styles.fileItem}>
                                                 <div className={styles.fileInfo}>
-                                                    <span className={styles.fileIcon}>📄</span>
+                                                    <DescriptionOutlinedIcon className={styles.fileIcon}/>
                                                     <span className={styles.fileName}>{file.name}</span>
+                                                    <span>•</span>
                                                     <button 
                                                         type="button" 
                                                         className={styles.previewLink}
@@ -110,7 +116,7 @@ const Step4 = () => {
                                                         className={styles.removeButton}
                                                         onClick={() => handleFileRemove(index)}
                                                     >
-                                                        ❌
+                                                        < CancelIcon />
                                                     </button>
                                                 </div>
                                             </div>

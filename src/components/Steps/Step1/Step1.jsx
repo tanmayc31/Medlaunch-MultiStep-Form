@@ -21,7 +21,7 @@ const Step1 = () => {
                 {/* Organization Section */}
                 <section className={styles.section}>
                     <h3 className={styles.sectionTitle}>Identify Healthcare Organization</h3>
-
+                    <h6 className={styles.littleGap}>t</h6>
                     <div className={styles.formGroup}>
                         <label className={styles.label}>Legal Entity Name *</label>
                         <input
